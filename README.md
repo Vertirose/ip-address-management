@@ -119,7 +119,7 @@ edit file **phpipam.conf**
 nano/vim /etc/apache2/sites-enabled/phpipam.conf
 ```
 
-tambahkan file berikut
+tambahkan file berikut [ini](config/phpipam-apache.conf)
 >```
 ><VirtualHost *:80>
 >    ServerAdmin webmaster@techviewleo.com
