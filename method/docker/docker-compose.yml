@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:10.6
+    environment:
+      MYSQL_ROOT_PASSWORD: phpipam
+      MYSQL_DATABASE: phpipam
+      MYSQL_USER: phpipam
+      MYSQL_PASSWORD: phpipam
+    volumes:
+      - ./db_init/:/docker-entrypoint-initdb.d:ro
+    restart: always
+
+  phpipam:
+    build: .
+    environment:
+      MYSQL_DB_HOSTNAME: mariadb
+      MYSQL_DB_USERNAME: phpipam
+      MYSQL_DB_PASSWORD: phpipam
+      MYSQL_DB_NAME: phpipam
+      MYSQL_DB_PORT: 3306
+    ports:
+      - "8080:80"
+    depends_on:
+      - mariadb
+    restart: always

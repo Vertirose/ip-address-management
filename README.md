@@ -15,7 +15,7 @@ apt update
 install semua dependencies dan tools serta applikasi yang digunakan dalam kasus ini
 
 ```
-apt install -y vim apache2 php-{cli,curl,gd,intl,pear,imap,apcu,pspell,tidy,xmlrpc,mbstring,gmp,json,xml,ldap,common,snmp,fpm} libapache2-mod-php mariadb-server mariadb-client
+apt install -y vim apache2 php-{mysql,curl,gd,intl,pear,imap,memcache,pspell,tidy,xmlrpc,mbstring,gmp,json,xml,fpm} libapache2-mod-php mariadb-client-core-10.6 mariadb-server-10.6
 ```
 
 edit timezone pada file **php.ini** pada PHP-FPM
@@ -46,7 +46,7 @@ mysql_secure_installation
 lakukan konfigurasi untuk membuat mariadb sekecil mungkin untuk memiliki celah keamanan
 
 > ```
->Enter current password for root (enter for none): password
+>Enter current password for root (enter for none):
 > ...
 >Switch to unix_socket authentication [Y/n] n
 > ...
@@ -73,7 +73,7 @@ Enter password: password
 konfigurasi database sebagai berikut
 ```
 CREATE DATABASE phpipam;
-GRANT ALL ON phpipam.* TO phpipam@localhost IDENTIFIED BY 'password';
+GRANT ALL ON phpipam.* TO phpipam@localhost IDENTIFIED BY 'phpipam';
 FLUSH PRIVILEGES;
 QUIT;
 ```
@@ -102,7 +102,7 @@ nano/vim config.php
 >```
 >$db['host'] = 'localhost';
 >$db['user'] = 'phpipam';
->$db['pass'] = 'Passw0rd';
+>$db['pass'] = 'phpipam';
 >$db['name'] = 'phpipam';
 >$db['port'] = 3306;
 >```
@@ -163,3 +163,27 @@ Enter password: password
 
 ---
 Open http://localhost for accessing the management console
+
+### Tambahan
+untuk automasi discovery bisa menggunakan cronjob, untuk melakukannya bisa menjalankan perintah berikut
+```
+sudo crontab -e
+*/? * * * * /usr/bin/php /var/www/html/phpipam/functions/scripts/pingCheck.php
+*/? * * * * /usr/bin/php /var/www/html/phpipam/functions/scripts/discoveryCheck.php
+
+```
+*ganti '?' sesuai dengan keinginan, value yang diizinkan adalah 1-59*
+
+### Metode Lain
+untuk mempermudah instalasi saya juga membuat beberapa cara untuk membuat phpipam dapat berjalan, antara lain adalah dengan menggunakan shell script dan juga menggunakan dockerfile yang bisa di unduh pada folder `method/` pada repository ini
+
+---
+untuk menggunakan metode shell script lakukan perintah berikut
+```
+chmod +x phpipam.sh
+./phpipam.sh
+```
+dan untuk menggunakan metode docker lakukan perintah berikut
+```
+docker-compose up --build
+```
