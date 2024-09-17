@@ -3,7 +3,7 @@
 IP Address Management (IPAM) adalah sistem yang digunakan untuk merencanakan, melacak, dan mengelola alamat IP dalam jaringan. Dengan semakin banyaknya perangkat dan layanan yang terhubung ke jaringan, manajemen IP yang efisien menjadi penting untuk menghindari konflik alamat, pemakaian IP yang berlebihan, atau kesalahan konfigurasi. IPAM membantu dalam mengotomatisasi proses distribusi, pengelolaan, dan pemantauan alamat IP, baik untuk jaringan IPv4 maupun IPv6. Dengan alat ini, administrator dapat menjaga ketersediaan, efisiensi, dan keamanan jaringan secara keseluruhan.
 
 ## Installation Guide
-This is installation guide for installing PHPIPAM in Debian 11 (Bullseye) 
+This is installation guide for installing PHPIPAM on Debian 11 (Bullseye) 
 
 ### Prerequisite
 update repository dengan perintah berikut
@@ -65,7 +65,7 @@ lakukan konfigurasi untuk membuat mariadb sekecil mungkin untuk memiliki celah k
 
 login ke MariaDB dengan melakukan perintah
 ```
-mysql -u root
+mysql -u root -p
 ...
 Enter password: password
 ```
