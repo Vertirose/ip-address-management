@@ -2,6 +2,15 @@
 
 IP Address Management (IPAM) adalah sistem yang digunakan untuk merencanakan, melacak, dan mengelola alamat IP dalam jaringan. Dengan semakin banyaknya perangkat dan layanan yang terhubung ke jaringan, manajemen IP yang efisien menjadi penting untuk menghindari konflik alamat, pemakaian IP yang berlebihan, atau kesalahan konfigurasi. IPAM membantu dalam mengotomatisasi proses distribusi, pengelolaan, dan pemantauan alamat IP, baik untuk jaringan IPv4 maupun IPv6. Dengan alat ini, administrator dapat menjaga ketersediaan, efisiensi, dan keamanan jaringan secara keseluruhan.
 
+## Tech Stack
+- [phpIPAM](https://phpipam.net/) - Main Packages for ip address management
+- [Debian](https://www.debian.org/releases/bullseye/debian-installer/) - Main Operating System that are used in this project
+- [VirtualBox](https://www.virtualbox.org/wiki/Downloads) - For running virtual machine
+- [MariaDB](https://mariadb.org/download/?t=mariadb&p=mariadb&r=11.5.2&os=windows&cpu=x86_64&pkg=msi&mirror=vhost_sg) - Database that are used in this project
+- [Apache2](https://httpd.apache.org/download.cgi) - Web Server that are used in this project
+- [PHP](https://www.php.net/downloads.php) - For phpIPAM application
+- [Git](https://git-scm.com/downloads) - For cloning the phpIPAM application
+
 ## Installation Guide
 This is installation guide for installing PHPIPAM on Debian 11 (Bullseye) 
 
